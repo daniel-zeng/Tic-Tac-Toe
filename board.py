@@ -31,10 +31,8 @@ class Board:
                break
 
     def gameLoop(self):
-        # do p1 move
         ro, co = getInput(self.board)
         print()
-        # co = input("Player 1 col: ")
         placePiece(self.board, ro, co, NOUG)
 
         print("Player 1 (O) goes")
@@ -45,12 +43,10 @@ class Board:
         if checkWinner(checkEnd(self.board)):
             return True
 
-        # do p2 move
         state = (tuple(self.board), CROSS)
         move, _score = self.memo[state]
         assert move > -1 or move < 9
         ro2, co2 = intMoveToRC(move)
-        # print(state, "-", move)
         placePiece(self.board, ro2, co2, CROSS)
 
         print("Player 2 (X) goes")
@@ -76,7 +72,6 @@ def getInput(data):
             print("That position already has a piece, try again")
 
 def processInput(stri, bounds, type):
-    # print(bounds)
     while 1:
         res = input(stri)
         val = None
@@ -85,7 +80,6 @@ def processInput(stri, bounds, type):
         except ValueError:
             print("Input not an integer, try again")
             continue
-
         if val in bounds:
             return val
         else:
@@ -94,8 +88,6 @@ def processInput(stri, bounds, type):
 
 
 def checkWinner(val):
-    # print(endGame[3])
-
     if val == -1:
         return False
     if val == endGame[NOUG]:
@@ -105,8 +97,6 @@ def checkWinner(val):
     elif val == endGame[TIE]:
         print("Game is tied")
     return True
-
-
 
 def printBoard(arr):
     count = 0
@@ -155,16 +145,12 @@ def checkWin(data, player):
 def checkEnd(data):
     fixedEnd = {NOUG: 1, CROSS: 0, TIE: 0.5}
 
-    # p1 win
     if checkWin(data, NOUG):
         return fixedEnd[NOUG]
-    # p2 win
     if checkWin(data, CROSS):
         return fixedEnd[CROSS]
-    # tie case
     if len([e for e in data if e != 0]) == 9:
         return fixedEnd[TIE]
-    # no win
     return -1
 
 
