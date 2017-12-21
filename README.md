@@ -10,7 +10,9 @@ python main.py
 ```
 
 
-Collecting date (if need to test other states):
+Collecting data (if need to test other states):
 ```
 python solve.py
 ```
+
+Tic Tac Toe engine was built through a minimax tree search on possible Tic Tac Toe game states and dynamic programming was used to speed up calculations.
