@@ -20,7 +20,7 @@ def processInput():
     while 1:
         inpt = input("> ")
         if inpt == "/h":
-            print("Normal Tic Tac Toe: Win the game by getting three in a row.")
+            print("Normal Tic Tac Toe: Win the game by making three in a row.")
             print("Reverse Tic Tac Toe: Win the game by making the other player make three in a row.")
         elif inpt == "/q":
             exit()
